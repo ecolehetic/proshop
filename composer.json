@@ -1,7 +1,15 @@
 {
-    "name": "mylittleparis/aaaa",
+    "name": "ecolehetic/proshop",
     "license": "proprietary",
     "type": "project",
+    "authors": [
+        {
+            "name": "Valentin 'TxReplay' Commenge",
+            "email": "txreplay@gmail.com",
+            "homepage": "http://txreplay.fr",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "": "src/"
