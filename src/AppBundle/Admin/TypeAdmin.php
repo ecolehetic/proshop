@@ -59,8 +59,8 @@ class TypeAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('title')
-            ->add('description')
+            ->add('title', null, ['label' => 'Titre'])
+            ->add('description', null, ['label' => 'Description'])
         ;
     }
 }

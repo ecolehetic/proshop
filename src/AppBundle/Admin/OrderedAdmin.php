@@ -61,11 +61,8 @@ class OrderedAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
-            ->add('comment')
-            ->add('status')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('comment', null, ['label' => 'Commentaire'])
+            ->add('status', null, ['label' => 'Statut'])
         ;
     }
 }

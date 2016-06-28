@@ -67,11 +67,10 @@ class ProductAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
-            ->add('link')
-            ->add('keywords')
-            ->add('mark')
-            ->add('type')
+            ->add('name', null, ['label' => 'Nom'])
+            ->add('keywords', null, ['label' => 'Mots clé'])
+            ->add('mark', null, ['label' => 'Marque'])
+            ->add('type', null, ['label' => 'Type'])
         ;
     }
 }
