@@ -37,6 +37,18 @@ class OrderedAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('orderedItems','sonata_type_collection',
+                [
+                    'by_reference' => false,
+                    'label' => false,
+                    'type_options' => ['delete' => true],
+                    'btn_add' => 'Ajouter un article',
+                    'required' => false
+                ],
+                [
+                    'edit' => 'inline',
+                    'inline' => 'table'
+                ])
             ->add('comment', null, ['label' => 'Commentaire'])
         ;
     }
@@ -50,6 +62,7 @@ class OrderedAdmin extends AbstractAdmin
             ->add('id', null, ['label' => 'ID'])
             ->add('comment', null, ['label' => 'Commentaire'])
             ->add('status', null, ['label' => 'Statut'])
+            ->add('orderedItems', null, ['label' => 'Articles'])
             ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
         ;

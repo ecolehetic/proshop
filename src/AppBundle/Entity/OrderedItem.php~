@@ -40,7 +40,7 @@ class OrderedItem
 
     /**
      * @var $order
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordered")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordered", inversedBy="OrderedItems")
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
      */
     private $order;
@@ -137,5 +137,28 @@ class OrderedItem
     public function getOrder()
     {
         return $this->order;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \AppBundle\Entity\Product $product
+     * @return OrderedItem
+     */
+    public function setProduct(\AppBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \AppBundle\Entity\Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

@@ -39,11 +39,11 @@ class OrderedItem
     private $number;
 
     /**
-     * @var $order
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordered")
-     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
+     * @var $ordered
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordered", inversedBy="OrderedItems")
+     * @ORM\JoinColumn(name="ordered_id", referencedColumnName="id" , nullable = false)
      */
-    private $order;
+    private $ordered;
 
     /**
      * @var $product
@@ -57,7 +57,7 @@ class OrderedItem
      */
     public function __toString()
     {
-        return ($this->getId()) ? : '';
+        return ((string)$this->getId()) ? : '';
     }
 
     /**
@@ -119,24 +119,24 @@ class OrderedItem
     /**
      * Set order
      *
-     * @param Ordered $order
+     * @param Ordered $ordered
      * @return OrderedItem
      */
-    public function setOrder(Ordered $order = null)
+    public function setOrdered(Ordered $ordered = null)
     {
-        $this->order = $order;
+        $this->ordered = $ordered;
 
         return $this;
     }
 
     /**
-     * Get order
+     * Get ordered
      *
      * @return \AppBundle\Entity\Ordered 
      */
-    public function getOrder()
+    public function getOrdered()
     {
-        return $this->order;
+        return $this->ordered;
     }
 
     /**

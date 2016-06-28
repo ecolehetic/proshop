@@ -36,10 +36,9 @@ class OrderedItemAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('price', null, ['label' => 'Prix'])
-            ->add('number', null, ['label' => 'Nombre'])
             ->add('product', null, ['label' => 'Produit'])
-            ->add('order', null, ['label' => 'Commande'])
+            ->add('number', null, ['label' => 'Nombre'])
+            ->add('price', null, ['label' => 'Prix'])
         ;
     }
 
@@ -63,10 +62,10 @@ class OrderedItemAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('product', null, ['label' => 'Produit'])
             ->add('price', null, ['label' => 'Prix'])
             ->add('number', null, ['label' => 'Nombre'])
             ->add('order', null, ['label' => 'Commande'])
-            ->add('product', null, ['label' => 'Produit'])
         ;
     }
 }
