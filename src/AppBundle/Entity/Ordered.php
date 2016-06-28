@@ -39,6 +39,14 @@ class Ordered
     private $status;
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return ('Commande n° ' . $this->getId()) ? : 'Nouvelle commande';
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -92,13 +100,5 @@ class Ordered
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return ($this->getId()) ? : '';
     }
 }

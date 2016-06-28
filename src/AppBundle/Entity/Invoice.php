@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Invoice
@@ -14,6 +15,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Invoice
 {
+    use ORMBehaviors\Timestampable\Timestampable;
+
     /**
      * @var int
      *
@@ -45,6 +48,14 @@ class Invoice
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
      */
     private $order;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return ($this->filename)? $this->filename : 'Nouvelle facture';
+    }
 
     /**
      * Get id
@@ -82,10 +93,10 @@ class Invoice
     /**
      * Set order
      *
-     * @param \AppBundle\Entity\Ordered $order
+     * @param Ordered $order
      * @return Invoice
      */
-    public function setOrder(\AppBundle\Entity\Ordered $order = null)
+    public function setOrder(Ordered $order = null)
     {
         $this->order = $order;
 
@@ -100,10 +111,5 @@ class Invoice
     public function getOrder()
     {
         return $this->order;
-    }
-
-    public function __toString()
-    {
-        return ($this->getId()) ? : '';
     }
 }

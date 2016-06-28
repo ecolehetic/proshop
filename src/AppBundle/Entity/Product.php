@@ -61,6 +61,14 @@ class Product
     private $type;
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return ($this->name)? $this->name : 'Nouveau produit';
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -165,10 +173,10 @@ class Product
     /**
      * Set type
      *
-     * @param \AppBundle\Entity\Type $type
+     * @param Type $type
      * @return Product
      */
-    public function setType(\AppBundle\Entity\Type $type = null)
+    public function setType(Type $type = null)
     {
         $this->type = $type;
 
@@ -183,13 +191,5 @@ class Product
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return ($this->getName()) ? : '';
     }
 }

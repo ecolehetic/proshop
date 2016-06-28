@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Type
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Type
 {
+    use ORMBehaviors\Timestampable\Timestampable;
+
     /**
      * @var int
      *
@@ -35,6 +38,13 @@ class Type
      */
     private $description;
 
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return ($this->title)? $this->title : 'Nouveau type';
+    }
 
     /**
      * Get id
@@ -90,13 +100,5 @@ class Type
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return ($this->getTitle()) ? : '';
     }
 }

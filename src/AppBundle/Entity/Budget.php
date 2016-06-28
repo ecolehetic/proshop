@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Budget
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Budget
 {
+    use ORMBehaviors\Timestampable\Timestampable;
+
     /**
      * @var int
      *
@@ -28,12 +31,19 @@ class Budget
      */
     private $value;
 
-
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Type")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return ($this->type)? $this->type : 'Nouveau type';
+    }
 
     /**
      * Get id
@@ -71,10 +81,10 @@ class Budget
     /**
      * Set type
      *
-     * @param \AppBundle\Entity\Type $type
+     * @param Type $type
      * @return Budget
      */
-    public function setType(\AppBundle\Entity\Type $type = null)
+    public function setType(Type $type = null)
     {
         $this->type = $type;
 
@@ -89,13 +99,5 @@ class Budget
     public function getType()
     {
         return $this->type;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return ($this->getType()) ? : '';
     }
 }

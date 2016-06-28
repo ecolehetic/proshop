@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * OrderedItem
@@ -12,6 +13,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class OrderedItem
 {
+    use ORMBehaviors\Timestampable\Timestampable;
+
     /**
      * @var int
      *
@@ -41,6 +44,14 @@ class OrderedItem
      * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
      */
     private $order;
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return ($this->getId()) ? : '';
+    }
 
     /**
      * Get id
@@ -101,10 +112,10 @@ class OrderedItem
     /**
      * Set order
      *
-     * @param \AppBundle\Entity\Ordered $order
+     * @param Ordered $order
      * @return OrderedItem
      */
-    public function setOrder(\AppBundle\Entity\Ordered $order = null)
+    public function setOrder(Ordered $order = null)
     {
         $this->order = $order;
 
@@ -119,13 +130,5 @@ class OrderedItem
     public function getOrder()
     {
         return $this->order;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return ($this->getId()) ? : '';
     }
 }
