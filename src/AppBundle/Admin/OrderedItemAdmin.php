@@ -65,7 +65,7 @@ class OrderedItemAdmin extends AbstractAdmin
             ->add('product', null, ['label' => 'Produit'])
             ->add('price', null, ['label' => 'Prix'])
             ->add('number', null, ['label' => 'Nombre'])
-            ->add('order', null, ['label' => 'Commande'])
+            ->add('ordered', null, ['label' => 'Commande'])
         ;
     }
 }

@@ -43,11 +43,11 @@ class Invoice
     private $file;
 
     /**
-     * @var $order
+     * @var $ordered
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordered")
-     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="ordered_id", referencedColumnName="id")
      */
-    private $order;
+    private $ordered;
 
     /**
      * @return string
@@ -91,25 +91,105 @@ class Invoice
     }
 
     /**
-     * Set order
+     * Set ordered
      *
-     * @param Ordered $order
+     * @param Ordered $ordered
      * @return Invoice
      */
-    public function setOrder(Ordered $order = null)
+    public function setOrdered(Ordered $ordered = null)
     {
-        $this->order = $order;
+        $this->ordered = $ordered;
 
         return $this;
     }
 
     /**
-     * Get order
+     * Get ordered
      *
      * @return \AppBundle\Entity\Ordered 
      */
-    public function getOrder()
+    public function getOrdered()
     {
-        return $this->order;
+        return $this->ordered;
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return Invoice
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->filename ? null : $this->getUploadRootDir().'/'.$this->filename;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->filename ? null : $this->getUploadDir().'/'.$this->filename;
+    }
+
+    /**
+     * @param $basepath
+     * @return string
+     */
+    protected function getUploadRootDir($basepath)
+    {
+        // the absolute directory path where uploaded documents should be saved
+        return $basepath.$this->getUploadDir();
+    }
+
+    /**
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        // get __DIR__
+        return 'uploads/factures';
+    }
+
+    /**
+     * @param $basepath
+     */
+    public function upload($basepath)
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        if (null === $basepath) {
+            return;
+        }
+
+        // Move file on uploadDir
+        $this->file->move($this->getUploadRootDir($basepath), $this->file->getClientOriginalName());
+
+        // Set the filename field with filename of the file
+        $this->setFilename($this->file->getClientOriginalName());
+
+        $this->file = null;
     }
 }
