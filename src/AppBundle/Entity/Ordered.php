@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
@@ -36,7 +37,13 @@ class Ordered
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status;
+    private $status = 1;
+
+    /**
+     * @var ArrayCollection $orderedItems
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\OrderedItem", mappedBy="ordered", cascade={"all"})
+     */
+    private $orderedItems;
 
     /**
      * @return string
@@ -100,5 +107,45 @@ class Ordered
     public function getStatus()
     {
         return $this->status;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderedItems = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add orderedItems
+     *
+     * @param OrderedItem $orderedItem
+     * @return Ordered
+     */
+    public function addOrderedItem(OrderedItem $orderedItem)
+    {
+        $orderedItem->setOrdered($this);
+        $this->orderedItems->add($orderedItem);
+    }
+
+    /**
+     * Remove orderedItems
+     *
+     * @param OrderedItem $orderedItem
+     */
+    public function removeOrderedItem(OrderedItem $orderedItem)
+    {
+        $orderedItem->unsetOrdered();
+        $this->orderedItems->removeElement($orderedItem);
+    }
+
+    /**
+     * Get orderedItems
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrderedItems()
+    {
+        return $this->orderedItems;
     }
 }

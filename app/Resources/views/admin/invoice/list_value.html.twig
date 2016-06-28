@@ -1,0 +1,7 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{% block field %}
+    <div style="min-width: 150px">
+        <a target="_blank" href="/uploads/factures/{{ object.filename }}">{{ object.filename }}</a>
+    </div>
+{% endblock %}

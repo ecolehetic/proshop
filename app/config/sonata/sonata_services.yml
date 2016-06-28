@@ -1,1 +1,30 @@
 services:
+    app.admin.type:
+        class: AppBundle\Admin\TypeAdmin
+        arguments: [~, AppBundle\Entity\Type, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Type }
+
+    app.admin.product:
+        class: AppBundle\Admin\ProductAdmin
+        arguments: [~, AppBundle\Entity\Product, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Produit }
+
+    app.admin.ordered:
+        class: AppBundle\Admin\OrderedAdmin
+        arguments: [~, AppBundle\Entity\Ordered, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Commande }
+
+    app.admin.ordered_item:
+        class: AppBundle\Admin\OrderedItemAdmin
+        arguments: [~, AppBundle\Entity\OrderedItem, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Element }
+
+    app.admin.invoice:
+        class: AppBundle\Admin\InvoiceAdmin
+        arguments: [~, AppBundle\Entity\Invoice, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Facture }
