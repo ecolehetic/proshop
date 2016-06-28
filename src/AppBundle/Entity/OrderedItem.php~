@@ -1,0 +1,100 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * OrderedItem
+ *
+ * @ORM\Table(name="ordered_item")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\OrderedItemRepository")
+ */
+class OrderedItem
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="price", type="float")
+     */
+    private $price;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="number", type="integer")
+     */
+    private $number;
+
+    /**
+     * @var $order
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordered")
+     * @ORM\JoinColumn(name="order_id", referencedColumnName="id")
+     */
+    private $order;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set price
+     *
+     * @param float $price
+     * @return OrderedItem
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return float 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set number
+     *
+     * @param integer $number
+     * @return OrderedItem
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get number
+     *
+     * @return integer 
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+}
