@@ -17,6 +17,7 @@ class BudgetAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('value', null, ['label' => 'Valeur'])
+            ->add('type', null, ['label' => 'Type'])
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -33,7 +34,8 @@ class BudgetAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('value', null, ['label' => 'Valeur'])
+            ->add('value', null, ['label' => 'Valeur', 'help' => ''])
+            ->add('type', null, ['label' => 'Type', 'help' => ''])
         ;
     }
 
@@ -45,6 +47,7 @@ class BudgetAdmin extends AbstractAdmin
         $showMapper
             ->add('id', null, ['label' => 'ID'])
             ->add('value', null, ['label' => 'Valeur'])
+            ->add('type', null, ['label' => 'Type'])
             ->add('createdAt', null, ['label' => 'Créé le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
         ;
@@ -58,6 +61,7 @@ class BudgetAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id', null, ['label' => 'ID'])
             ->add('value', null, ['label' => 'Valeur'])
+            ->add('type', null, ['label' => 'Type'])
         ;
     }
 }
