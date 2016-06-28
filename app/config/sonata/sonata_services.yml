@@ -10,3 +10,9 @@ services:
         arguments: [~, AppBundle\Entity\Product, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Produit }
+
+    app.admin.ordered:
+        class: AppBundle\Admin\OrderedAdmin
+        arguments: [~, AppBundle\Entity\Ordered, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Commande }

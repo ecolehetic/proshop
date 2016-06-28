@@ -36,7 +36,7 @@ class Ordered
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status;
+    private $status = 1;
 
     /**
      * @return string
