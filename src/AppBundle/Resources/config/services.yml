@@ -16,3 +16,9 @@ services:
         arguments: [~, AppBundle\Entity\Ordered, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Ordered }
+
+    app.admin.ordered_item:
+        class: AppBundle\Admin\OrderedItemAdmin
+        arguments: [~, AppBundle\Entity\OrderedItem, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: OrderedItem }
