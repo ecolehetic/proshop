@@ -1,0 +1,39 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{% block field %}
+    <td>
+        <table class="table table-bordered col-sm-12">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Nom Produit</td>
+                    <td>Lien du Produit</td>
+                    <td>Nombre</td>
+                    <td>Prix unitaire</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% set total = 0 %}
+                {% for orderedItem in object.orderedItems %}
+                    <tr>
+                        <td>{{ orderedItem.id }}</td>
+                        <td>{{ orderedItem.product.name }}</td>
+                        <td><a href="{{ orderedItem.product.link }}">{{ orderedItem.product.link }}</a></td>
+                        <td>{{ orderedItem.number }}</td>
+                        <td>{{ orderedItem.price }}</td>
+                        <td>{% set totalitem = orderedItem.number * orderedItem.price %}{% set total = total + totalitem %}{{ totalitem }}</td>
+                    </tr>
+                {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>TOTAL</td>
+                        <td>{{ total }}</td>
+                    </tr>
+            </tbody>
+        </table>
+        </td>
+{% endblock %}

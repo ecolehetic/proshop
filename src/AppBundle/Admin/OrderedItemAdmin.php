@@ -49,7 +49,7 @@ class OrderedItemAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id', null, ['label' => 'ID'])
-            ->add('price', null, ['label' => 'Prix'])
+            ->add('price', null, ['label' => 'Prix unitaire'])
             ->add('number', null, ['label' => 'Nombre'])
             ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
