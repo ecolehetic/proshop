@@ -22,6 +22,21 @@ class OrderedAdmin extends AbstractAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
+        if($this->getConfigurationPool()->getContainer()->get('security.context')->isGranted('ROLE_ADMIN')) {
+            $actions =
+                [
+                    'show' => array(),
+                    'edit' => array(),
+                    'delete' => array(),
+                ];
+        }
+        else {
+            $actions =
+                [
+                    'show' => array(),
+                ];
+        }
+
         $listMapper
             ->add('id', null, ['label' => 'ID'])
             ->add('comment', null, ['label' => 'Commentaire'])
@@ -29,11 +44,7 @@ class OrderedAdmin extends AbstractAdmin
             ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
             ->add('_action', null, array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
+                'actions' => $actions
             ))
         ;
     }
