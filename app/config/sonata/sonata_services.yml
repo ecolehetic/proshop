@@ -28,3 +28,8 @@ services:
         arguments: [~, AppBundle\Entity\Invoice, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Facture }
+    app.admin.budget:
+        class: AppBundle\Admin\BudgetAdmin
+        arguments: [~, AppBundle\Entity\Budget, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Budget }

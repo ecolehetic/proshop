@@ -32,9 +32,9 @@ class Budget
     private $value;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Type")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
-     */
+ * @ORM\OneToOne(targetEntity="AppBundle\Entity\Type")
+ * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+ */
     private $type;
 
     /**
