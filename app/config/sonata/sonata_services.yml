@@ -15,7 +15,7 @@ services:
         class: AppBundle\Admin\OrderedItemAdmin
         arguments: [~, AppBundle\Entity\OrderedItem, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Element }
+            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Element, show_in_dashboard: false}
 
     app.admin.invoice:
         class: AppBundle\Admin\InvoiceAdmin

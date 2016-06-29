@@ -39,7 +39,6 @@ class UserAdmin extends AbstractAdmin
         $formMapper
             ->add('username', null, ['label' => 'Nom de compte'])
             ->add('email', null, ['label' => 'Email'])
-            ->add('enabled', null, ['label' => 'Activé'])
             ->add('locked', null, ['label' => 'BLoqué'])
             ->add('roles', null, ['label' => 'Role'])
         ;

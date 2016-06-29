@@ -69,14 +69,13 @@ class OrderedAdmin extends AbstractAdmin
             ->add('id', null, ['label' => 'ID'])
             ->add('comment', null, ['label' => 'Commentaire'])
             ->add('status', null, ['label' => 'Statut'])
-            ->add('orderedItems', null, ['label' => 'Articles'])
+            ->add('createdAt', null, ['label' => 'Crée le'])
+            ->add('updatedAt', null, ['label' => 'Modifié le'])
             ->add('articles', null,
                 [
                     'label' => 'Articles',
                     'template' => 'admin/order/item.html.twig'
                 ])
-            ->add('createdAt', null, ['label' => 'Crée le'])
-            ->add('updatedAt', null, ['label' => 'Modifié le'])
         ;
     }
 
