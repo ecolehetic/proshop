@@ -37,7 +37,7 @@ class Ordered
      *
      * @ORM\Column(name="status", type="integer")
      */
-    private $status = 1;
+    private $status = 0;
 
     /**
      * @var ArrayCollection $orderedItems

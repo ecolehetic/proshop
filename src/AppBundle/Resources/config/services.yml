@@ -28,3 +28,9 @@ services:
         arguments: [~, AppBundle\Entity\Invoice, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Invoice }
+
+    app.admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin.admin, manager_type: orm, group: admin, label: User }
