@@ -10,6 +10,13 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class OrderedAdmin extends AbstractAdmin
 {
+    private $statusChoices = [
+        0 => 'Commande en attente',
+        1 => 'Demande envoyée',
+        2 => 'Demande acceptée',
+        3 => 'Facture disponible',
+    ];
+
     /**
      * @param ListMapper $listMapper
      */
@@ -18,7 +25,7 @@ class OrderedAdmin extends AbstractAdmin
         $listMapper
             ->add('id', null, ['label' => 'ID'])
             ->add('comment', null, ['label' => 'Commentaire'])
-            ->add('status', null, ['label' => 'Statut'])
+            ->add('status', 'choice', ['label' => 'Statut', 'choices' => $this->statusChoices])
             ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
             ->add('_action', null, array(
