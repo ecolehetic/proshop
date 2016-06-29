@@ -11,6 +11,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  *
  * @ORM\Table(name="ordered")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrderedRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Ordered
 {

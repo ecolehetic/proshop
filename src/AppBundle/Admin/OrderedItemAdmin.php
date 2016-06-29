@@ -36,7 +36,7 @@ class OrderedItemAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('product', null, ['label' => 'Produit'])
+            ->add('product','sonata_type_model', ['label' => 'Produit'])
             ->add('number', null, ['label' => 'Nombre'])
             ->add('price', null, ['label' => 'Prix unitaire'])
         ;

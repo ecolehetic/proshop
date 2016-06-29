@@ -3,7 +3,7 @@ services:
         class: AppBundle\Admin\ProductAdmin
         arguments: [~, AppBundle\Entity\Product, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Produit }
+            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Produit, show_in_dashboard: false }
 
     app.admin.ordered:
         class: AppBundle\Admin\OrderedAdmin
