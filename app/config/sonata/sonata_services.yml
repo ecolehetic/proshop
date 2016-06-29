@@ -1,35 +1,42 @@
 services:
-    app.admin.type:
-        class: AppBundle\Admin\TypeAdmin
-        arguments: [~, AppBundle\Entity\Type, SonataAdminBundle:CRUD]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Type }
-
     app.admin.product:
         class: AppBundle\Admin\ProductAdmin
         arguments: [~, AppBundle\Entity\Product, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Produit }
+            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Produit }
 
     app.admin.ordered:
         class: AppBundle\Admin\OrderedAdmin
         arguments: [~, AppBundle\Entity\Ordered, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Commande }
+            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Commande }
 
     app.admin.ordered_item:
         class: AppBundle\Admin\OrderedItemAdmin
         arguments: [~, AppBundle\Entity\OrderedItem, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Element }
+            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Element, show_in_dashboard: false}
 
     app.admin.invoice:
         class: AppBundle\Admin\InvoiceAdmin
         arguments: [~, AppBundle\Entity\Invoice, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: Facture }
+            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Facture }
+
     app.admin.budget:
         class: AppBundle\Admin\BudgetAdmin
         arguments: [~, AppBundle\Entity\Budget, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: Budget }
+
+    app.admin.user:
+        class: AppBundle\Admin\UserAdmin
+        arguments: [~, AppBundle\Entity\User, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: User }
+
+    app.admin.type:
+        class: AppBundle\Admin\TypeAdmin
+        arguments: [~, AppBundle\Entity\Type, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Type }

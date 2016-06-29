@@ -92,5 +92,12 @@ class InvoiceAdmin extends AbstractAdmin
     public function saveFile(Invoice $invoice) {
         $basepath = $this->getRequest()->getBasePath();
         $invoice->upload($basepath);
+
+        $this->updateOrder($invoice);
+    }
+
+    public function updateOrder(Invoice $invoice)
+    {
+        $invoice->getOrdered()->setStatus(3);
     }
 }

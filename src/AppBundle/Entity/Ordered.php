@@ -140,7 +140,7 @@ class Ordered
     }
 
     /**
-     * Get orderedItems
+     * Get orderedItem
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
