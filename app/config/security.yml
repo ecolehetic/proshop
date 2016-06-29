@@ -3,10 +3,34 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_ADMIN:
+        ROLE_MANAGER:
             - ROLE_USER
-            - ROLE_SONATA_CONTENT_EDITOR
-            - ROLE_SONATA_ARTICLE_ADMIN
+            - ROLE_APP_ADMIN
+            - ROLE_APP_ADMIN_ORDERED_LIST
+            - ROLE_APP_ADMIN_ORDERED_VIEW
+            - ROLE_APP_ADMIN_ORDERED_EDIT
+            - ROLE_APP_ADMIN_ORDERED_CREATE
+            - ROLE_APP_ADMIN_ORDERED_DELETE
+
+            - ROLE_APP_ADMIN_PRODUCT_LIST
+            - ROLE_APP_ADMIN_PRODUCT_VIEW
+            - ROLE_APP_ADMIN_PRODUCT_EDIT
+            - ROLE_APP_ADMIN_PRODUCT_CREATE
+            - ROLE_APP_ADMIN_PRODUCT_DELETE
+
+            - ROLE_APP_ADMIN_ORDERED_ITEM_LIST
+            - ROLE_APP_ADMIN_ORDERED_ITEM_VIEW
+            - ROLE_APP_ADMIN_ORDERED_ITEM_EDIT
+            - ROLE_APP_ADMIN_ORDERED_ITEM_CREATE
+            - ROLE_APP_ADMIN_ORDERED_ITEM_DELETE
+
+            - ROLE_APP_ADMIN_INVOICE_LIST
+            - ROLE_APP_ADMIN_INVOICE_VIEW
+            - ROLE_APP_ADMIN_INVOICE_EDIT
+            - ROLE_APP_ADMIN_INVOICE_CREATE
+            - ROLE_APP_ADMIN_INVOICE_DELETE
+        ROLE_ADMIN:
+            - ROLE_MANAGER
         ROLE_SUPER_ADMIN:
             - ROLE_ADMIN
 
@@ -30,4 +54,4 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_SUPER_ADMIN }
+        - { path: ^/admin/, role: ROLE_MANAGER }

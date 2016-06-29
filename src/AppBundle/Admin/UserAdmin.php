@@ -8,18 +8,19 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class OrderedItemAdmin extends AbstractAdmin
+class UserAdmin extends AbstractAdmin
 {
-
     /**
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('product', null, ['label' => 'Produit'])
-            ->add('price', null, ['label' => 'Prix unitaire'])
-            ->add('number', null, ['label' => 'Nombre'])
+            ->add('username', null, ['label' => 'Nom de compte'])
+            ->add('email', null, ['label' => 'Email'])
+            ->add('enabled', null, ['label' => 'Activé'])
+            ->add('locked', null, ['label' => 'Bloqué'])
+            ->add('roles', null, ['label' => 'Role'])
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -36,9 +37,10 @@ class OrderedItemAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('product', null, ['label' => 'Produit'])
-            ->add('number', null, ['label' => 'Nombre'])
-            ->add('price', null, ['label' => 'Prix unitaire'])
+            ->add('username', null, ['label' => 'Nom de compte'])
+            ->add('email', null, ['label' => 'Email'])
+            ->add('locked', null, ['label' => 'BLoqué'])
+            ->add('roles', null, ['label' => 'Role'])
         ;
     }
 
@@ -48,11 +50,11 @@ class OrderedItemAdmin extends AbstractAdmin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id', null, ['label' => 'ID'])
-            ->add('price', null, ['label' => 'Prix unitaire'])
-            ->add('number', null, ['label' => 'Nombre'])
-            ->add('createdAt', null, ['label' => 'Crée le'])
-            ->add('updatedAt', null, ['label' => 'Modifié le'])
+            ->add('username', null, ['label' => 'Nom de compte'])
+            ->add('email', null, ['label' => 'Email'])
+            ->add('enabled', null, ['label' => 'Activé'])
+            ->add('locked', null, ['label' => 'BLoqué'])
+            ->add('roles', null, ['label' => 'Role'])
         ;
     }
 
@@ -62,10 +64,11 @@ class OrderedItemAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('product', null, ['label' => 'Produit'])
-            ->add('price', null, ['label' => 'Prix unitaire'])
-            ->add('number', null, ['label' => 'Nombre'])
-            ->add('ordered', null, ['label' => 'Commande'])
+            ->add('username', null, ['label' => 'Nom de compte'])
+            ->add('email', null, ['label' => 'Email'])
+            ->add('enabled', null, ['label' => 'Activé'])
+            ->add('locked', null, ['label' => 'Bloqué'])
+            ->add('roles',null, ['label' => 'Role'])
         ;
     }
 }
