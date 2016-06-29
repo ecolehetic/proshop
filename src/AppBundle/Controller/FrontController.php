@@ -13,6 +13,8 @@ class FrontController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+        $this->get('ordered.service')->sendEmail();
         return $this->render('front/index.html.twig', []);
     }
 }
