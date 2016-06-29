@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 
 class OrderedAdmin extends AbstractAdmin
 {
@@ -16,6 +17,20 @@ class OrderedAdmin extends AbstractAdmin
         2 => 'Demande acceptée',
         3 => 'Facture disponible',
     ];
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        $collection
+            ->add('accept', $this->getRouterIdParameter().'/accept',
+                [
+                    '_controller' => 'AppBundle:CRUD:accept'
+                ])
+            ->add('refuse', $this->getRouterIdParameter().'/refuse',
+                [
+                    '_controller' => 'AppBundle:CRUD:accept'
+                ])
+        ;
+    }
 
     /**
      * @param ListMapper $listMapper
@@ -28,6 +43,13 @@ class OrderedAdmin extends AbstractAdmin
                     'show' => array(),
                     'edit' => array(),
                     'delete' => array(),
+                    'accept' => array(
+                        'template' => 'admin/CRUD/list__action_accept.html.twig'
+                    ),
+                    'refuse' => array(
+                        'template' => 'admin/CRUD/list__action_refuse.html.twig'
+                    )
+
                 ];
         }
         else {
