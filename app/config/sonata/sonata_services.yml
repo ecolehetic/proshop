@@ -1,10 +1,4 @@
 services:
-    app.admin.type:
-        class: AppBundle\Admin\TypeAdmin
-        arguments: [~, AppBundle\Entity\Type, SonataAdminBundle:CRUD]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: dashboard, label: Type }
-
     app.admin.product:
         class: AppBundle\Admin\ProductAdmin
         arguments: [~, AppBundle\Entity\Product, SonataAdminBundle:CRUD]
@@ -34,3 +28,9 @@ services:
         arguments: [~, AppBundle\Entity\User, SonataAdminBundle:CRUD]
         tags:
             - { name: sonata.admin, manager_type: orm, group: admin, label: User }
+
+    app.admin.type:
+        class: AppBundle\Admin\TypeAdmin
+        arguments: [~, AppBundle\Entity\Type, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Type }
