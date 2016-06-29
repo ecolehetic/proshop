@@ -21,14 +21,19 @@ class OrderedCreateCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
+        $orderedService = $this->getContainer()->get('ordered.service');
 
+        $data = [
+            'name' => 'Valentin'
+        ];
 
         try {
             // On récupère toutes les commandes créées avec le status 0
             $ordereds = $em->getRepository('AppBundle:Ordered')->findBy(['status' => 0]);
 
             foreach ($ordereds as $ordered){
-                var_dump($ordered->getComment());
+                $orderedService->sendEmail('mailToManager', $data);
+                // Set Status to 1
             }
 
             $output->writeln('Success');

@@ -13,23 +13,8 @@ class FrontController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $name = 'Valentin';
 
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('proshop.tech.mail@gmail.com')
-            ->setTo('manugorre@gmail.com')
-            ->setBody(
-                $this->renderView(
-                    'emails/registration.html.twig',
-                    array('name' => $name)
-                ),
-                'text/html'
-            )
-        ;
-
-        $this->get('mailer')->send($message);
-
+        $this->get('ordered.service')->sendEmail();
         return $this->render('front/index.html.twig', []);
     }
 }
