@@ -3,6 +3,7 @@
 namespace AppBundle\Admin;
 
 use AppBundle\Entity\Invoice;
+use AppBundle\Entity\Ordered;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -41,7 +42,16 @@ class InvoiceAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('ordered', null, ['label' => 'Commande'])
+            ->add('ordered', null,
+                [
+                    'label' => 'Commande',
+                    'query_builder' => function(\Doctrine\ORM\EntityRepository $repository) {
+                        return $repository
+                            ->createQueryBuilder('o')
+                            ->where('o.status = :status')
+                            ->setParameter('status', 3);
+                    }
+                ])
             ->add('file', 'file', ['label' => 'Fichier'])
         ;
     }
