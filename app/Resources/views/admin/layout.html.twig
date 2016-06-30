@@ -16,44 +16,6 @@
 {% block side_bar_after_nav %}{% endblock %}
 {% block sonata_sidebar_search %}{% endblock sonata_sidebar_search %}
 
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript" src="http://www.google.com/jsapi?key=VOTRE_CLE"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="{{ asset('js/highcharts/area.js') }}"></script>
-    <script src="{{ asset('js/highcharts/column.js') }}"></script>
-    <script src="{{ asset('js/highcharts/column_diff.js') }}"></script>
-    <script src="{{ asset('js/highcharts/pie_chart.js') }}"></script>
-    <script src="{{ asset('js/highcharts/spline.js') }}"></script>
-{% endblock javascripts %}
-
-
-{% block sonata_admin_content %}
-    <div class="container">
-        <div class="col-md-5">
-            <div id="column_diff" style="width:100%; height: 200px; margin: 0 auto"></div>
-        </div>
-        <div class="col-md-5">
-            <div id="pie_chart" style="width:100%; height: 200px; margin: 0 auto"></div>
-        </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="col-md-10">
-            <div id="column" style="width:100%; height: 200px; margin: 0 auto"></div>
-        </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="col-md-5">
-            <div id="spline" style="width:100%; height: 200px; margin: 0 auto"></div>
-        </div>
-        <div class="col-md-5">
-            <div id="area" style="width:100%; height: 200px; margin: 0 auto"></div>
-        </div>
-    </div>
-{% endblock sonata_admin_content %}
-
 {% block side_bar_nav %}
     <ul class="sidebar-menu">
         {% for group in admin_pool.dashboardgroups %}
