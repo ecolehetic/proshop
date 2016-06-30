@@ -21,20 +21,17 @@ class OrderedFinalCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $orderedService = $this->getContainer()->get('ordered.service');
-
-        $data = [
-            'name' => 'Valentin'
-        ];
 
         try {
-            // On récupère toutes les commandes créées avec le status 0
-            $ordereds = $em->getRepository('AppBundle:Ordered')->findBy(['status' => 0]);
+            // On récupère toutes les commandes créées avec le status 1
+            $ordereds = $em->getRepository('AppBundle:Ordered')->findBy(['status' => 1]);
 
             foreach ($ordereds as $ordered){
-                $orderedService->sendEmail('mailToManager', $data);
-                // Set Status to 1
+                $ordered->setStatus(0);
+                $em->persist($ordered);
+
             }
+            $em->flush();
 
             $output->writeln('Success');
         } catch (Exception $e) {
