@@ -38,6 +38,7 @@ class ProductAdmin extends AbstractAdmin
         $formMapper
             ->add('name', null, ['label' => 'Nom'])
             ->add('link', null, ['label' => 'Lien'])
+            ->add('provider', 'sonata_type_model', ['label' => 'Fournisseur'])
             ->add('keywords', null, ['label' => 'Mots clé'])
             ->add('mark', null, ['label' => 'Marque'])
             ->add('type', null, ['label' => 'Type'])

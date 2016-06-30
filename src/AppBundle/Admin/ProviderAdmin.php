@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class BudgetAdmin extends AbstractAdmin
+class ProviderAdmin extends AbstractAdmin
 {
     /**
      * @param ListMapper $listMapper
@@ -16,8 +16,8 @@ class BudgetAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('type', null, ['label' => 'Type'])
-            ->add('value', null, ['label' => 'Valeur'])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('linkWebsite', null, ['label' => 'Lien du fournisseur'])
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -34,8 +34,8 @@ class BudgetAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('value', null, ['label' => 'Valeur', 'help' => ''])
-            ->add('type', null, ['label' => 'Type', 'help' => ''])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('linkWebsite', null, ['label' => 'Lien du fournisseur'])
         ;
     }
 
@@ -46,9 +46,9 @@ class BudgetAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id', null, ['label' => 'ID'])
-            ->add('type', null, ['label' => 'Type'])
-            ->add('value', null, ['label' => 'Valeur'])
-            ->add('createdAt', null, ['label' => 'Créé le'])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('linkWebsite', null, ['label' => 'Lien du fournisseur'])
+            ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
         ;
     }
@@ -59,8 +59,10 @@ class BudgetAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('value', null, ['label' => 'Valeur'])
-            ->add('type', null, ['label' => 'Type'])
+            ->add('id', null, ['label' => 'ID'])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('createdAt', null, ['label' => 'Crée le'])
+            ->add('updatedAt', null, ['label' => 'Modifié le'])
         ;
     }
 }

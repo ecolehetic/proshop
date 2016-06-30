@@ -18,7 +18,7 @@ class OrderedItemAdmin extends AbstractAdmin
     {
         $listMapper
             ->add('product', null, ['label' => 'Produit'])
-            ->add('price', null, ['label' => 'Prix'])
+            ->add('price', null, ['label' => 'Prix unitaire'])
             ->add('number', null, ['label' => 'Nombre'])
             ->add('_action', null, array(
                 'actions' => array(
@@ -36,9 +36,9 @@ class OrderedItemAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('product', null, ['label' => 'Produit'])
+            ->add('product','sonata_type_model', ['label' => 'Produit'])
             ->add('number', null, ['label' => 'Nombre'])
-            ->add('price', null, ['label' => 'Prix'])
+            ->add('price', null, ['label' => 'Prix unitaire'])
         ;
     }
 
@@ -49,7 +49,7 @@ class OrderedItemAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id', null, ['label' => 'ID'])
-            ->add('price', null, ['label' => 'Prix'])
+            ->add('price', null, ['label' => 'Prix unitaire'])
             ->add('number', null, ['label' => 'Nombre'])
             ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
@@ -63,7 +63,7 @@ class OrderedItemAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('product', null, ['label' => 'Produit'])
-            ->add('price', null, ['label' => 'Prix'])
+            ->add('price', null, ['label' => 'Prix unitaire'])
             ->add('number', null, ['label' => 'Nombre'])
             ->add('ordered', null, ['label' => 'Commande'])
         ;

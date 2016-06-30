@@ -11,6 +11,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  *
  * @ORM\Table(name="products")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -38,6 +39,13 @@ class Product
      * @ORM\Column(name="link", type="string", length=255)
      */
     private $link;
+
+    /**
+     * @var $provider
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Provider")
+     * @ORM\JoinColumn(name="provider_id", referencedColumnName="id")
+     */
+    private $provider;
 
     /**
      * @var string
@@ -122,6 +130,22 @@ class Product
     public function getLink()
     {
         return $this->link;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * @param mixed $provider
+     */
+    public function setProvider($provider)
+    {
+        $this->provider = $provider;
     }
 
     /**

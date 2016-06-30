@@ -11,6 +11,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  *
  * @ORM\Table(name="ordered")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrderedRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Ordered
 {
@@ -102,12 +103,25 @@ class Ordered
     /**
      * Get status
      *
-     * @return integer 
+     * @return integer
      */
     public function getStatus()
     {
         return $this->status;
     }
+
+    public function getStringStatus()
+    {
+        switch($this->status) {
+            case 0 : return ['status' => 'Commande refusée', 'label' => 'danger']; break;
+            case 1 : return ['status' => 'Demande crée', 'label' => 'default']; break;
+            case 2 : return ['status' => 'Demande envoyée', 'label' => 'primary']; break;
+            case 3 : return ['status' => 'Demande acceptée', 'label' => 'success']; break;
+            case 4 : return ['status' => 'Facture disponible', 'label' => 'info']; break;
+            default: return ['status' => 'Commande en attente', 'label' => 'warning']; break;
+        }
+    }
+
     /**
      * Constructor
      */
@@ -140,7 +154,7 @@ class Ordered
     }
 
     /**
-     * Get orderedItems
+     * Get orderedItem
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
