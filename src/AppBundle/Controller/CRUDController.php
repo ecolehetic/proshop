@@ -20,6 +20,7 @@ class CRUDController extends Controller
     public function acceptAction()
     {
         $object = $this->admin->getSubject();
+        $this->container->get('ordered.service')->sendEmail('acceptOrder', 'Votre demande d\'achat a été validée !', ['ordered' => $object]);
         $object->setStatus(2);
 
         $this->updateAction($object);
@@ -33,6 +34,7 @@ class CRUDController extends Controller
     public function refusedAction()
     {
         $object = $this->admin->getSubject();
+        $this->container->get('ordered.service')->sendEmail('denyOrder', 'Votre demande d\'achat a été refusée !', ['ordered' => $object]);
         $object->setStatus(0);
 
         $this->updateAction($object);

@@ -28,15 +28,15 @@ class OrderedService
         $this->persistAndFlush($ordered);
     }
 
-    public function sendEmail($templateName, $data=[])
+    public function sendEmail($templateName, $subject, $data=[])
     {
         $body = $this->renderTemplate($templateName, $data);
 
         $message = \Swift_Message::newInstance()
-            ->setSubject('Hello Email')
-            ->setFrom('steve@proshop.tech')
+            ->setSubject($subject)
+            ->setFrom(array('team@proshop.tech' => 'L\'équipe Proshop'))
             ->setTo('txreplay@gmail.com')
-            ->setBody($body)
+            ->setBody($body, 'text/html')
         ;
 
         $this->mailer->send($message);
