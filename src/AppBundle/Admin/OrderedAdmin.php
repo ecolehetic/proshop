@@ -11,13 +11,6 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class OrderedAdmin extends AbstractAdmin
 {
-    private $statusChoices = [
-        0 => 'Commande en attente',
-        1 => 'Demande envoyée',
-        2 => 'Demande acceptée',
-        3 => 'Facture disponible',
-    ];
-
     protected function configureRoutes(RouteCollection $collection)
     {
         $collection
@@ -61,7 +54,11 @@ class OrderedAdmin extends AbstractAdmin
 
         $listMapper
             ->add('comment', null, ['label' => 'Commentaire'])
-            ->add('status', 'choice', ['label' => 'Statut', 'choices' => $this->statusChoices])
+            ->add('status', 'choice',
+                [
+                    'label' => 'Statut',
+                    'template' => 'admin/order/status_helper.html.twig'
+                ])
             ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
             ->add('_action', null, array(
