@@ -41,6 +41,13 @@ class Product
     private $link;
 
     /**
+     * @var $provider
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Provider")
+     * @ORM\JoinColumn(name="provider_id", referencedColumnName="id")
+     */
+    private $provider;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="keywords", type="string", length=255)
@@ -123,6 +130,22 @@ class Product
     public function getLink()
     {
         return $this->link;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProvider()
+    {
+        return $this->provider;
+    }
+
+    /**
+     * @param mixed $provider
+     */
+    public function setProvider($provider)
+    {
+        $this->provider = $provider;
     }
 
     /**

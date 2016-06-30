@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ProductAdmin extends AbstractAdmin
+class ProviderAdmin extends AbstractAdmin
 {
     /**
      * @param ListMapper $listMapper
@@ -16,10 +16,8 @@ class ProductAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name', null, ['label' => 'Nom'])
-            ->add('link', null, ['label' => 'Lien'])
-            ->add('keywords', null, ['label' => 'Mots clé'])
-            ->add('mark', null, ['label' => 'Marque'])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('linkWebsite', null, ['label' => 'Lien du fournisseur'])
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
@@ -36,12 +34,8 @@ class ProductAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', null, ['label' => 'Nom'])
-            ->add('link', null, ['label' => 'Lien'])
-            ->add('provider', 'sonata_type_model', ['label' => 'Fournisseur'])
-            ->add('keywords', null, ['label' => 'Mots clé'])
-            ->add('mark', null, ['label' => 'Marque'])
-            ->add('type', null, ['label' => 'Type'])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('linkWebsite', null, ['label' => 'Lien du fournisseur'])
         ;
     }
 
@@ -52,11 +46,8 @@ class ProductAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id', null, ['label' => 'ID'])
-            ->add('name', null, ['label' => 'Nom'])
-            ->add('link', null, ['label' => 'Lien'])
-            ->add('keywords', null, ['label' => 'Mots Clé'])
-            ->add('mark', null, ['label' => 'Marque'])
-            ->add('type', null, ['label' => 'Type'])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('linkWebsite', null, ['label' => 'Lien du fournisseur'])
             ->add('createdAt', null, ['label' => 'Crée le'])
             ->add('updatedAt', null, ['label' => 'Modifié le'])
         ;
@@ -68,10 +59,10 @@ class ProductAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name', null, ['label' => 'Nom'])
-            ->add('keywords', null, ['label' => 'Mots clé'])
-            ->add('mark', null, ['label' => 'Marque'])
-            ->add('type', null, ['label' => 'Type'])
+            ->add('id', null, ['label' => 'ID'])
+            ->add('name', null, ['label' => 'Nom du fournisseur'])
+            ->add('createdAt', null, ['label' => 'Crée le'])
+            ->add('updatedAt', null, ['label' => 'Modifié le'])
         ;
     }
 }
