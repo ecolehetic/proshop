@@ -60,7 +60,6 @@ class OrderedAdmin extends AbstractAdmin
         }
 
         $listMapper
-            ->add('id', null, ['label' => 'ID'])
             ->add('comment', null, ['label' => 'Commentaire'])
             ->add('status', 'choice', ['label' => 'Statut', 'choices' => $this->statusChoices])
             ->add('createdAt', null, ['label' => 'Crée le'])
@@ -76,19 +75,9 @@ class OrderedAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        //TODO: Faire la jointure dans l'autre sens. Product vers OrderedItem
         $formMapper
-            ->add('orderedItems','sonata_type_collection',
-                [
-                    'by_reference' => false,
-                    'label' => false,
-                    'type_options' => ['delete' => true],
-                    'btn_add' => 'Ajouter un article',
-                    'required' => false
-                ],
-                [
-                    'edit' => 'inline',
-                    'inline' => 'table'
-                ])
+            ->add('orderedItems','sonata_type_model', ['label' => 'Produit', 'multiple' => true])
             ->add('comment', null, ['label' => 'Commentaire'])
         ;
     }

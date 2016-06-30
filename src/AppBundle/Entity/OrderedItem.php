@@ -10,6 +10,7 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  *
  * @ORM\Table(name="ordered_item")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrderedItemRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class OrderedItem
 {
@@ -41,7 +42,6 @@ class OrderedItem
     /**
      * @var $ordered
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ordered", inversedBy="OrderedItems")
-     * @ORM\JoinColumn(name="ordered_id", referencedColumnName="id" , nullable = false)
      */
     private $ordered;
 
@@ -57,7 +57,7 @@ class OrderedItem
      */
     public function __toString()
     {
-        return ((string)$this->getId()) ? : '';
+        return ($this->product)? (string)$this->product . ' (x'. $this->number .')' : 'Nouveau produit';
     }
 
     /**
@@ -155,7 +155,7 @@ class OrderedItem
     /**
      * Get product
      *
-     * @return \AppBundle\Entity\Product 
+     * @return \AppBundle\Entity\Product
      */
     public function getProduct()
     {
