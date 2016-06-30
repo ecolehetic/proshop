@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html class="no-js" lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <style>
+        body, input {
+            font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="margin-top: 50px;">
+    <p style="text-align: center; margin: 15px auto 80px auto;">
+        <img src="{{ asset('images/logo.png') }}" style="width:250px; display:block;margin:5px auto;" alt="Proshop logo"/>
+        <br>
+        <img src="{{ asset('images/marmelade.png') }}" style="width:250px; display:block;margin:5px auto;" alt="Marmelade logo"/>
+    </p>
+
+    <div style="width:250px;margin:0 auto;">
+
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+            <a href="{{ path('fos_user_security_logout') }}">
+                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+            </a>
+        {% else %}
+            {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+        {% endif %}
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <span class="flash-{{ type }}">
+                        {{ message }}
+                    </span>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        {% block fos_user_content %}
+        {% endblock fos_user_content %}
+
+        {#{% if app.request.attributes.get('_route') == 'fos_user_security_login' %}#}
+            {#<a href="{{ path('fos_user_resetting_request') }}" style="text-align: center;display: block;text-decoration: underline;color: #3C3F41;">Mot de passe oublié</a>#}
+        {#{% else %}#}
+            {#<a href="{{ path('fos_user_security_login') }}" style="text-align: center;display: block;text-decoration: underline;color: #3C3F41;">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+        {#{% endif %}#}
+    </div>
+</div>
+{% block javascripts %}
+    <script src="{{ asset('js/vendor/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/trunk.js') }}"></script>
+{% endblock %}
+
+</body>
+</html>
