@@ -29,12 +29,15 @@ class OrderedCreateCommand extends ContainerAwareCommand
 
         try {
             // On récupère toutes les commandes créées avec le status 0
-            $ordereds = $em->getRepository('AppBundle:Ordered')->findBy(['status' => 0]);
+            $ordereds = $em->getRepository('AppBundle:Ordered')->findBy(['status' => 1]);
 
             foreach ($ordereds as $ordered){
-                $orderedService->sendEmail('mailToManager', $data);
-                // Set Status to 1
+                $orderedService->sendEmail('askToManager', 'Nouvelle demande d\'achat', $ordereds);
+                $ordered->setStatus(2);
+                $em->persist($ordered);
+
             }
+            $em->flush();
 
             $output->writeln('Success');
         } catch (Exception $e) {
