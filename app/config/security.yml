@@ -31,8 +31,41 @@ security:
             - ROLE_APP_ADMIN_INVOICE_DELETE
         ROLE_ADMIN:
             - ROLE_MANAGER
+
+            - ROLE_APP_ADMIN_USER_LIST
+            - ROLE_APP_ADMIN_USER_VIEW
+            - ROLE_APP_ADMIN_USER_EDIT
+            - ROLE_APP_ADMIN_USER_DELETE
+
+            - ROLE_APP_ADMIN_BUDGET_LIST
+            - ROLE_APP_ADMIN_BUDGET_VIEW
+            - ROLE_APP_ADMIN_BUDGET_EDIT
+            - ROLE_APP_ADMIN_BUDGET_CREATE
+            - ROLE_APP_ADMIN_BUDGET_DELETE
+
+            - ROLE_APP_ADMIN_TYPE_LIST
+            - ROLE_APP_ADMIN_TYPE_VIEW
+            - ROLE_APP_ADMIN_TYPE_EDIT
+            - ROLE_APP_ADMIN_TYPE_CREATE
+            - ROLE_APP_ADMIN_TYPE_DELETE
+
+            - ROLE_APP_ADMIN_PROVIDER_LIST
+            - ROLE_APP_ADMIN_PROVIDER_VIEW
+            - ROLE_APP_ADMIN_PROVIDER_EDIT
+            - ROLE_APP_ADMIN_PROVIDER_CREATE
+            - ROLE_APP_ADMIN_PROVIDER_DELETE
+
+            - ROLE_APP_ADMIN_CONFIG_VIEW
+            - ROLE_APP_ADMIN_CONFIG_LIST
+
         ROLE_SUPER_ADMIN:
             - ROLE_ADMIN
+
+            - ROLE_APP_ADMIN_CONFIG_LIST
+            - ROLE_APP_ADMIN_CONFIG_VIEW
+            - ROLE_APP_ADMIN_CONFIG_EDIT
+            - ROLE_APP_ADMIN_CONFIG_CREATE
+            - ROLE_APP_ADMIN_CONFIG_DELETE
 
     providers:
         fos_userbundle:
