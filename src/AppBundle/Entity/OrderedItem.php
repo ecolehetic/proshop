@@ -57,7 +57,7 @@ class OrderedItem
      */
     public function __toString()
     {
-        return ($this->id)? (string)$this->id : 'Nouveau produit';
+        return ($this->product)? (string)$this->product . ' (x'. $this->number .')' : 'Nouveau produit';
     }
 
     /**

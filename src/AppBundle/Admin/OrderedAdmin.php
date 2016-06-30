@@ -60,7 +60,6 @@ class OrderedAdmin extends AbstractAdmin
         }
 
         $listMapper
-            ->add('id', null, ['label' => 'ID'])
             ->add('comment', null, ['label' => 'Commentaire'])
             ->add('status', 'choice', ['label' => 'Statut', 'choices' => $this->statusChoices])
             ->add('createdAt', null, ['label' => 'Crée le'])
