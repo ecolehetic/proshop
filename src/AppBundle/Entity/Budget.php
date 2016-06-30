@@ -42,7 +42,7 @@ class Budget
      */
     public function __toString()
     {
-        return ($this->type)? $this->type : 'Nouveau type';
+        return ('Budget pour '.$this->getType()->getTitle())? : 'Nouveau Budget';
     }
 
     /**
