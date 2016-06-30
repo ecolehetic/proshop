@@ -21,7 +21,7 @@ class CRUDController extends Controller
     {
         $object = $this->admin->getSubject();
         $this->container->get('ordered.service')->sendEmail('acceptOrder', 'Votre demande d\'achat a été validée !', ['ordered' => $object]);
-        $object->setStatus(2);
+        $object->setStatus(3);
 
         $this->updateAction($object);
 
